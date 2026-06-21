@@ -105,7 +105,10 @@
                 <a href="../index.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">&larr; 홈으로 이동</a>
                 <a href="../index.html#checker-section" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">무료 표절 검사 실행 &rarr;</a>
             </div>
-        </article>
+        
+            <!-- 댓글 영역 -->
+            <div class="comment-section" id="comment-section-container"></div>
+</article>
 
         <div class="ad-container" id="ad-blog-bottom">
             [ ADVERTISEMENT - 여기에 애드센스 본문 하단 광고가 노출됩니다 ]
@@ -150,5 +153,9 @@
     </footer>
 
     <script src="../js/app.js"></script>
+    <!-- Firebase SDK 및 댓글 구동 스크립트 -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="../js/comments.js"></script>
 </body>
 </html>

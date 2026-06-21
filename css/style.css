@@ -907,3 +907,151 @@ footer {
         text-align: center;
     }
 }
+
+/* Comment Section Styles */
+.comment-section {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+}
+.comment-section h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+.comment-form {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+.comment-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.comment-input, .comment-textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.comment-input:focus, .comment-textarea:focus {
+    outline: none;
+    border-color: var(--secondary);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.2);
+}
+.comment-textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.comment-item {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    padding-bottom: 0.4rem;
+}
+.comment-author {
+    font-weight: 600;
+    color: var(--secondary);
+    font-size: 0.95rem;
+}
+.comment-date {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.comment-body-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: pre-wrap;
+}
+.comment-delete-btn {
+    background: transparent;
+    border: none;
+    color: #ff5252;
+    cursor: pointer;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+.comment-delete-btn:hover {
+    background: rgba(255, 82, 82, 0.12);
+}
+
+/* Modal for Password verification */
+.comment-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.comment-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.comment-modal-content {
+    background: #110c22;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 1.8rem;
+    width: 290px;
+    box-shadow: 0 10px 45px rgba(0,0,0,0.6);
+    text-align: center;
+}
+.comment-modal-content h3 {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+}
+.comment-modal-content input {
+    width: 100%;
+    margin-bottom: 1.2rem;
+    box-sizing: border-box;
+}
+.comment-modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+.comment-modal-actions .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}

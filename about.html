@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 및 문의 - VerifyAI</title>
+    <meta name="description" content="VerifyAI 프로젝트의 소개와 비전, 그리고 서비스 개선을 위한 제안이나 기술 문의를 보낼 수 있는 연락처 페이지입니다.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://adsencegoogle-4.vercel.app/about.html">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ==========================================
+         [GOOGLE ADSENSE CODE PLACEMENT]
+         애드센스 신청 시 제공받은 스크립트 코드를 아래 주석 해제 후 붙여넣으세요.
+         ========================================== -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1813961515018381" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="logo-link">
+                VerifyAI<span class="logo-dot"></span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 토글">
+                &#x2630;
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" id="nav-home">홈</a></li>
+                <li><a href="privacy.html" class="nav-link" id="nav-privacy">개인정보처리방침</a></li>
+                <li><a href="terms.html" class="nav-link" id="nav-terms">이용약관</a></li>
+                <li><a href="about.html" class="nav-link active" id="nav-about">소개 및 문의</a></li>
+                <li><a href="index.html#checker-section" class="btn-nav" id="nav-cta">무료 검사기 실행</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content wrapper -->
+    <main class="content-wrapper">
+        
+        <!-- Ad Placement (Top of Content) -->
+        <div class="ad-container" id="ad-about-top">
+            [ ADVERTISEMENT - 여기에 애드센스 광고가 노출됩니다 ]
+        </div>
+
+        <article class="content-card">
+            <h1>프로젝트 소개 & 문의</h1>
+            <div class="content-meta">
+                <span>VerifyAI는 신뢰할 수 있는 학술 커뮤니티의 발전을 위해 작동합니다.</span>
+            </div>
+
+            <div class="content-body">
+                <h2>우리의 비전</h2>
+                <p>
+                    VerifyAI는 생성형 AI의 폭발적인 증가 속에서 연구적 진실성을 유지하려는 대학생, 연구원, 교육자들을 돕기 위해 시작된 독립 기술 프로젝트입니다. 인공지능 기술은 생산성을 혁신하지만, 지적 게으름이나 표절을 정당화하는 도구로 오용되어서는 안 됩니다.
+                </p>
+                <p>
+                    당사는 데이터 마이닝 기술과 언어 모델 패턴 인식을 기반으로, 사용자의 글이 학술계의 일반적인 정직성 요건에 부합하는지 신속하게 자가 진단할 수 있는 툴을 개발하여 배포하고 있습니다.
+                </p>
+
+                <h2>도구의 기술적 특징</h2>
+                <ul>
+                    <li><strong>Perplexity & Burstiness 측정:</strong> 인간의 글쓰기는 문장 길이와 단어 사용 패턴의 변동폭(Burstiness)이 큰 반면, AI는 매우 일정하고 기계적인 분산도를 보입니다. 이 복잡도를 정량화하여 AI 생성 확률을 분석합니다.</li>
+                    <li><strong>안전한 로컬 휘발성 검사:</strong> 당사의 검사 시뮬레이터는 사용자의 텍스트 데이터를 별도 서버 데이터베이스에 영구 소장하지 않아 논문 제출 이전의 초안(Draft) 보안을 확실히 보장합니다.</li>
+                </ul>
+
+                <h2 style="margin-top: 3rem;">문의하기 (Contact Us)</h2>
+                <p>
+                    VerifyAI 도구 개선을 위한 기술 제안, 제휴 문의 또는 피드백이 있으신 경우 아래 문의 양식을 작성해 주시면 검토 후 회신 드리겠습니다.
+                </p>
+
+                <!-- Contact Form (Interactive Mock/Functional Interface) -->
+                <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('문의가 성공적으로 접수되었습니다. 입력해주신 이메일로 영업일 기준 2~3일 내에 답변드리겠습니다.'); this.reset();">
+                    <div class="form-group">
+                        <label class="form-label" for="contact-name">이름 / 기관명</label>
+                        <input type="text" class="form-input" id="contact-name" placeholder="홍길동" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-email">회신받을 이메일 주소</label>
+                        <input type="email" class="form-input" id="contact-email" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-subject">문의 제목</label>
+                        <input type="text" class="form-input" id="contact-subject" placeholder="제휴 또는 건의사항 제목" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contact-message">상세 문의 내용</label>
+                        <textarea class="form-textarea" id="contact-message" placeholder="문의하실 구체적인 내용을 100자 이상 적어주세요." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+                        문의 메일 보내기
+                    </button>
+                </form>
+            </div>
+        </article>
+
+        <!-- Ad Placement (Bottom of Content) -->
+        <div class="ad-container" id="ad-about-bottom">
+            [ ADVERTISEMENT - 여기에 애드센스 광고가 노출됩니다 ]
+        </div>
+
+    </main>
+
+    <!-- Footer Area -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+                        VerifyAI<span class="logo-dot"></span>
+                    </a>
+                    <p>VerifyAI는 지식과 연구의 진실성을 지키기 위해 노력하는 독립적인 오픈 소스 프로젝트입니다. 학술 연구 및 학업 지원용 시뮬레이터를 무료로 사용할 수 있습니다.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">유용한 링크</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">홈</a></li>
+                        <li><a href="about.html">소개 및 문의</a></li>
+                        <li><a href="index.html#checker-section">표절 검사기</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">법적 정책 및 관리</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">개인정보처리방침</a></li>
+                        <li><a href="terms.html">서비스 이용약관</a></li>
+                        <li><a href="robots.txt">크롤러 정책</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VerifyAI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

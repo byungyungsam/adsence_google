@@ -1,0 +1,3 @@
+# Google AdSense ads.txt 파일
+# 구글 애드센스 승인 이후, 아래의 'pub-0000000000000000' 부분을 본인의 게시자 ID(Publisher ID)로 변경하여 업로드하세요.
+google.com, pub-1813961515018381, DIRECT, f08c47fec0942fa0

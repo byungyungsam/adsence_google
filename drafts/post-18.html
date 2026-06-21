@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국내외 표절율 감지 프로그램(카피킬러, Turnitin)의 차이점 및 대처법 - VerifyAI 블로그</title>
+    <meta name="description" content="국내 주요 대학이 선호하는 카피킬러(CopyKiller)와 글로벌 명문 학술 단체 및 대학이 채택하는 턴잇인(Turnitin) 프로그램의 작동 원리 차이점과 이에 알맞은 작성 대처법을 비교 분석합니다.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://adsencegoogle-5.vercel.app/blog/post-18.html">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <!-- ==========================================
+         [GOOGLE ADSENSE CODE PLACEMENT]
+         애드센스 신청 시 제공받은 스크립트 코드를 아래 주석 해제 후 붙여넣으세요.
+         ========================================== -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1813961515018381" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo" id="logo-link">
+                VerifyAI<span class="logo-dot"></span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 토글">
+                &#x2630;
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link" id="nav-home">홈</a></li>
+                <li><a href="../privacy.html" class="nav-link" id="nav-privacy">개인정보처리방침</a></li>
+                <li><a href="../terms.html" class="nav-link" id="nav-terms">이용약관</a></li>
+                <li><a href="../about.html" class="nav-link" id="nav-about">소개 및 문의</a></li>
+                <li><a href="../index.html#checker-section" class="btn-nav" id="nav-cta">무료 검사기 실행</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content wrapper -->
+    <main class="content-wrapper">
+        
+        <!-- Ad Placement (Top of Content) -->
+        <div class="ad-container" id="ad-blog-top">
+            [ ADVERTISEMENT - 여기에 애드센스 본문 상단 광고가 노출됩니다 ]
+        </div>
+
+        <article class="content-card">
+            <div class="badge" style="margin-bottom: 1rem; border-color: rgba(0, 229, 255, 0.2); background: rgba(0, 229, 255, 0.05); color: var(--secondary);">
+                학술 윤리 & 표절 예방
+            </div>
+            
+            <h1>국내외 표절율 감지 프로그램(카피킬러, Turnitin)의 차이점 및 대처법</h1>
+            
+            <div class="content-meta">
+                <span>작성자: VerifyAI 연구팀</span> &nbsp;|&nbsp; <span>작성일자: 예약 발행일</span>
+            </div>
+
+            <div class="content-body">
+                <p>
+                    대학 레포트 제출이나 논문 게재를 앞두고 '표절 검사 확인서'를 요구받는 경우가 다반사입니다. 이때 국내 대학생들은 대부분 **카피킬러(CopyKiller)**를 접하게 되고, 영어 논문을 투고하거나 해외 명문대생들은 **턴잇인(Turnitin)** 프로그램을 이용하게 됩니다. 두 프로그램은 겉보기에 비슷해 보이지만 대조 데이터베이스의 성격과 유사도 필터링 메커니즘에서 상당한 차이를 보입니다. 두 핵심 엔진의 특징을 파악하고 이에 맞춰 지혜롭게 대처하는 작성 방법론을 비교해 보겠습니다.
+                </p>
+
+                <h2>1. 데이터베이스(DB) 대조 영역의 차이</h2>
+                <p>
+                    두 시스템이 어떤 자료들과 내 보고서를 비교하는지가 첫 번째 차이점입니다.
+                </p>
+                <ul>
+                    <li><strong>카피킬러 (CopyKiller):</strong> 한국적 학업 환경에 특화되어 있습니다. 국내 포털 블로그, 신문 뉴스 기사, 공공기관의 한글 HWP 연구 보고서, 국내 등재 저널(KCI급) 및 국내 대학 선배들의 기제출 레포트 데이터가 방대하게 누적되어 있어 한글 문서 표절 적발률이 압도적입니다.</li>
+                    <li><strong>턴잇인 (Turnitin):</strong> 글로벌 스탠다드입니다. 전 세계 유명 학술 출판사(Springer, IEEE, Elsevier 등)의 영문 저널 논문, 해외 대학 학위 논문, 전 세계 수십억 개의 인터넷 웹페이지를 대조군으로 삼아 영문 문서 및 다국어 혼용 표절 적발에 절대적인 성능을 보여줍니다.</li>
+                </ul>
+
+                <h2>2. 유사도 검출 알고리즘과 기본 필터 조건의 차이</h2>
+                <p>
+                    두 프로그램이 '어떤 문장을 표절로 판단하는가'에 대한 수식적 규칙도 상이합니다.
+                </p>
+                <p>
+                    카피킬러의 표준 설정은 **'연속 6단어(또는 1어절)' 일치** 시 유사 문장으로 간주하며, 전체 검사 파일의 문장 중 몇 퍼센트가 겹치는지를 '유사도 비율'로 도출합니다. 또한, 카피킬러는 한국어 조사 분석 및 어미 변화 감지에 강점이 있습니다.
+                </p>
+                <p>
+                    반면 턴잇인은 영문의 언어적 특성을 반영하여 통계적 확률 지표(유사성 지수, Similarity Index)를 제공하며, 문장 구조가 조금 바뀌더라도 동일한 소스(Source)에서 유래한 흔적이 발견되면 구간을 형광펜으로 칠합니다. 특히 턴잇인은 인용 부호나 참고문헌 목록을 결과값에서 제외하는 **'필터(Exclude) 설정'**이 교수나 심사관의 세팅에 따라 크게 변하므로, 이에 유연하게 적응해야 합니다.
+                </p>
+
+                <!-- Ad Placement (Middle of Content) -->
+                <div class="ad-container" id="ad-blog-mid" style="margin: 2rem 0; min-height: 90px; border-style: dotted;">
+                    [ ADVERTISEMENT - 여기에 애드센스 본문 중간 광고가 노출됩니다 ]
+                </div>
+
+                <h2>3. 각 시스템별 맞춤형 글쓰기 대처 전략</h2>
+                <p>
+                    이러한 특성을 극복하고 표절율을 안전 범위로 낮추기 위한 작성 가이드입니다.
+                </p>
+                <p>
+                    **카피킬러 대처법:** 국내 한글 백과사전이나 블로그에 나온 설명문을 복사 붙여넣기 한 뒤 조사만 은/는/이/가로 바꾸는 요령은 카피킬러가 가장 잘 감지하는 유형입니다. 국내 자료를 인용할 때는 글을 완전히 다시 써서 본인의 독자적인 문법 구조로 문장을 재탄생(완전한 패러프레이징)시켜야 안전합니다.
+                </p>
+                <p>
+                    **턴잇인 대처법:** 턴잇인은 해외 저널 논문을 인용할 때 단순 기계 번역을 우회하는 다국어 패턴도 잡아냅니다. 영작 시 관용적인 영문 숙어나 학술적 표현을 무분별하게 차용하기보다는, 본인의 고유한 주어-서술어 문장 구조를 사용하고 정식 APA/MLA 인용 스타일 규칙에 맞추어 `(Author, Year)` 출처 표기를 누락 없이 매립해야 적발율이 내려갑니다.
+                </p>
+
+                <h2>결론 및 요약</h2>
+                <p>
+                    국내 대학 중심의 카피킬러와 세계적인 저널 검토의 턴잇인은 각각 한글 데이터와 글로벌 영문 DB에 강점을 둔 훌륭한 연구 윤리 감시 체계입니다. 표절율 수치 자체에만 전전긍긍하기보다, 두 시스템 모두 공통적으로 가치 있게 여기는 '올바른 출처 표기와 독창적인 문장 구성'이라는 학술 글쓰기의 기본 문법을 충실히 지키는 것이 가장 완벽한 대처법입니다. 원고를 제출하기에 앞서, 자가 진단을 통해 불안한 텍스트 유사도 매칭 비율을 객관적으로 분석해 보기 위해 VerifyAI 표절률 시뮬레이터를 이용하여 사전에 미비한 인용 누락부를 꼼꼼하게 검토하고 보정하시는 것을 추천합니다.
+                </p>
+            </div>
+            
+            <!-- 블로그 포스트 이동 네비게이션 버튼 -->
+            <div style="margin-top: 3.5rem; display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                <a href="../index.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">&larr; 홈으로 이동</a>
+                <a href="../index.html#checker-section" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">무료 표절 검사 실행 &rarr;</a>
+            </div>
+        </article>
+
+        <!-- Ad Placement (Bottom of Content) -->
+        <div class="ad-container" id="ad-blog-bottom">
+            [ ADVERTISEMENT - 여기에 애드센스 본문 하단 광고가 노출됩니다 ]
+        </div>
+
+    </main>
+
+    <!-- Footer Area -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="../index.html" class="logo" style="margin-bottom: 1rem;">
+                        VerifyAI<span class="logo-dot"></span>
+                    </a>
+                    <p>VerifyAI는 지식과 연구의 진실성을 지키기 위해 노력하는 독립적인 오픈 소스 프로젝트입니다. 학술 연구 및 학업 지원용 시뮬레이터를 무료로 사용할 수 있습니다.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">유용한 링크</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">홈</a></li>
+                        <li><a href="../about.html">소개 및 문의</a></li>
+                        <li><a href="../index.html#checker-section">표절 검사기</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">법적 정책 및 관리</h4>
+                    <ul class="footer-links">
+                        <li><a href="../privacy.html">개인정보처리방침</a></li>
+                        <li><a href="../terms.html">서비스 이용약관</a></li>
+                        <li><a href="../robots.txt">크롤러 정책</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VerifyAI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+</body>
+</html>

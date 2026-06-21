@@ -1,0 +1,49 @@
+name: Daily Blog Post Scheduler
+
+on:
+  schedule:
+    # 매일 UTC 10시 00분 (한국 시간 19시 00분)에 실행을 위해 트리거합니다.
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+    # 깃허브 Actions 페이지에서 수동으로 테스트 구동할 수 있도록 허용합니다.
+
+permissions:
+  contents: write  # Actions 봇이 수정 내용을 레포지토리에 푸시할 수 있도록 권한 부여
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Apply Random Sleep (0 to 3600 seconds)
+        run: |
+          # 한국시간 19:00 ~ 20:00 사이 랜덤 분에 업로드되도록 0~60분 사이 임의 대기
+          DELAY=$((RANDOM % 3600))
+          echo "Applying a random delay of $DELAY seconds before publishing..."
+          sleep $DELAY
+
+      - name: Run Publish Script
+        run: |
+          python publish_post.py
+
+      - name: Commit and Push Changes
+        run: |
+          # 변경사항이 있는지 감지
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "chore: auto-publish daily blog post [skip ci]"
+            git push origin main
+            echo "Successfully committed and pushed today's post."
+          else
+            echo "No draft found to publish or no changes detected."
+          fi

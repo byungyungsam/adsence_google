@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성형 AI 텍스트 감지 프로그램의 작동 원리 (Perplexity와 Burstiness) - VerifyAI 블로그</title>
+    <meta name="description" content="챗GPT나 클로드와 같은 인공지능이 생성한 글을 탐지 프로그램이 어떻게 구분해내는지 그 핵심적인 원리인 당혹도(Perplexity)와 변화 폭(Burstiness)을 분석합니다.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://adsencegoogle-4.vercel.app/blog/post-3.html">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- ==========================================
+         [GOOGLE ADSENSE CODE PLACEMENT]
+         애드센스 신청 시 제공받은 스크립트 코드를 아래 주석 해제 후 붙여넣으세요.
+         ========================================== -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1813961515018381" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="../index.html" class="logo" id="logo-link">
+                VerifyAI<span class="logo-dot"></span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 토글">
+                &#x2630;
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">홈</a></li>
+                <li><a href="../privacy.html" class="nav-link">개인정보처리방침</a></li>
+                <li><a href="../terms.html" class="nav-link">이용약관</a></li>
+                <li><a href="../about.html" class="nav-link">소개 및 문의</a></li>
+                <li><a href="../index.html#checker-section" class="btn-nav">무료 검사기 실행</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        
+        <div class="ad-container" id="ad-blog-top">
+            [ ADVERTISEMENT - 여기에 애드센스 본문 상단 광고가 노출됩니다 ]
+        </div>
+
+        <article class="content-card">
+            <div class="badge" style="margin-bottom: 1rem; border-color: rgba(0, 229, 255, 0.2); background: rgba(0, 229, 255, 0.05); color: var(--secondary);">
+                생성형 AI와 학계 동향
+            </div>
+            
+            <h1>생성형 AI 텍스트 감지 프로그램의 작동 원리 (Perplexity와 Burstiness)</h1>
+            
+            <div class="content-meta">
+                <span>작성자: VerifyAI 연구팀</span> &nbsp;|&nbsp; <span>작성일자: 2026년 6월 21일</span>
+            </div>
+
+            <div class="content-image" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                <img src="../images/post-2.png" alt="AI 텍스트 감지 기술 작동 원리 일러스트" style="width: 100%; height: auto; display: block;">
+            </div>
+
+            <div class="content-body">
+                <p>
+                    챗GPT, 클로드, 제미나이 등 생성형 인공지능이 작성한 문장은 얼핏 보기에 문법적으로 완벽하고 사람이 쓴 글과 구별하기 어려워 보입니다. 그러나 대학 교육 현장이나 학술논문 심사 과정에서 널리 활용되고 있는 'AI 텍스트 감지 툴(AI Detector)'은 높은 확률로 이러한 합성 텍스트를 감별해 냅니다. 기계가 쓴 문장을 컴퓨터 알고리즘은 대체 어떤 방식으로 찾아내는지, 그 수학적·통계적 핵심 원리인 **Perplexity(당혹도)**와 **Burstiness(변화 폭)**에 대해 알기 쉽게 파헤쳐 보겠습니다.
+                </p>
+
+                <h2>1. 당혹도 (Perplexity) - 단어 선택의 예측 가능성</h2>
+                <p>
+                    AI 텍스트 감지의 첫 번째 핵심 축은 'Perplexity(당혹도)'입니다. 이 개념은 쉽게 말해 **"컴퓨터가 다음에 올 단어를 얼마나 쉽게 예측할 수 있는가"**를 뜻합니다.
+                </p>
+                <p>
+                    인공지능 언어 모델(LLM)은 통계적으로 학습된 방대한 텍스트 데이터를 기반으로, 특정 단어 뒤에 올 확률이 가장 높은 단어를 수학적으로 계산해 출력합니다. 예컨대 "나는 아침에 일어나서 물을..." 이라는 구문 뒤에는 "마셨다"가 올 확률이 "던졌다"나 "그렸다"보다 압도적으로 높습니다.
+                </p>
+                <p>
+                    AI는 항상 통계적 확률이 보장된 단어를 선택하는 경향이 있기 때문에, AI가 생성한 글은 단어 예측 당혹도(Perplexity)가 극도로 **낮게** 측정됩니다. 즉, 단어 구성이 너무 뻔하고 예측 가능해 컴퓨터가 읽었을 때 '전혀 당황스럽지 않은 글'이 되는 것입니다. 반면 사람은 감정, 고유한 경험, 창의적인 수식어를 활용하여 예기치 못한 단어(당혹도가 높은 단어)를 문맥 중간에 배치하므로 Perplexity 값이 불규칙하고 높게 나타납니다.
+                </p>
+
+                <h2>2. 변화 폭 (Burstiness) - 문장의 다양성과 호흡</h2>
+                <p>
+                    두 번째 축은 'Burstiness(변화 폭 또는 분출성)'입니다. 이는 **"문장의 길이와 구조가 시간에 따라 얼마나 다양하게 변하는가"**를 나타내는 통계 지표입니다.
+                </p>
+                <p>
+                    사람은 글을 쓸 때 자신만의 독특한 리듬을 갖습니다. 어떤 문장은 한두 단어로 극단적으로 짧게 끝내고, 바로 다음 문장은 접속사와 수식어를 길게 붙여서 만연체로 전개하는 등 문장 길이의 편차가 매우 큽니다.
+                </p>
+                <ul>
+                    <li><strong>사람의 글쓰기 (High Burstiness):</strong> "결과는 놀라웠다. 당초 예측했던 수치를 훨씬 상회하는 수치였을 뿐 아니라, 기존 연구가 간과했던 핵심 요인이 변수로 작용했기 때문이다. 우리는 즉각 분석에 착수했다." (단문과 장문이 불규칙하게 섞임)</li>
+                    <li><strong>AI의 글쓰기 (Low Burstiness):</strong> "본 연구 결과는 예측 수치를 상회하는 결과를 나타냈습니다. 이는 기존 연구가 고려하지 않은 다양한 외생 변수가 작용했기 때문입니다. 이에 따라 연구팀은 데이터 검증 분석을 추가적으로 수행하였습니다." (비슷한 구조와 길이의 문장이 기계적으로 연속됨)</li>
+                </ul>
+                <p>
+                    AI 감지 프로그램은 문장별 토큰 개수의 표준편차를 구하여 Burstiness 값이 지나치게 일관되면 AI가 작성한 문서로 의심하고 분류 작업을 처리합니다.
+                </p>
+
+                <!-- Ad Placement (Middle of Content) -->
+                <div class="ad-container" id="ad-blog-mid" style="margin: 2rem 0; min-height: 90px; border-style: dotted;">
+                    [ ADVERTISEMENT - 여기에 애드센스 본문 중간 광고가 노출됩니다 ]
+                </div>
+
+                <h2>3. 워터마크 기술의 도입과 미래 전망</h2>
+                <p>
+                    최근에는 텍스트 통계치 분석을 넘어, OpenAI 등 AI 개발사에서 자체적으로 생성 문장에 미세한 통계적 흔적을 심는 **'AI 워터마킹(Watermarking)'** 기술을 시도하고 있습니다. 특정 알파벳 조합이나 단어 간격의 빈도수를 임의의 수학적 규칙에 부합하도록 강제 출력하는 방식입니다.
+                </p>
+                <p>
+                    이는 인간의 육안으로는 전혀 구별되지 않으나, 해독 알고리즘을 사용하면 즉시 해당 AI 모델이 서명한 글임을 파악할 수 있는 가장 강력한 탐지 기법으로 자리 잡고 있습니다.
+                </p>
+
+                <h2>결론: AI 감지기를 대하는 올바른 자세</h2>
+                <p>
+                    AI 감지기는 완벽한 정답기가 아니며, 종종 성실히 작성한 인간의 글을 AI 글로 오해하는 오탐(False Positive)을 범하기도 합니다. 특히 비영어권 저술가가 문법 교정 도구를 거칠게 사용하면 이러한 통계적 단순화로 인해 AI 글로 오진받을 확률이 커집니다. 따라서 논문을 투고하기 전에는 글의 독창성 지수와 문장 다양성을 VerifyAI 검증 시스템 등을 통해 스스로 제어하고 보완하는 것이 중요합니다.
+                </p>
+            </div>
+            
+            <div style="margin-top: 3.5rem; display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+                <a href="../index.html" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">&larr; 홈으로 이동</a>
+                <a href="../index.html#checker-section" class="btn btn-primary" style="font-size: 0.85rem; padding: 0.6rem 1.2rem;">무료 표절 검사 실행 &rarr;</a>
+            </div>
+        </article>
+
+        <div class="ad-container" id="ad-blog-bottom">
+            [ ADVERTISEMENT - 여기에 애드센스 본문 하단 광고가 노출됩니다 ]
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="../index.html" class="logo" style="margin-bottom: 1rem;">
+                        VerifyAI<span class="logo-dot"></span>
+                    </a>
+                    <p>VerifyAI는 지식과 연구의 진실성을 지키기 위해 노력하는 독립적인 오픈 소스 프로젝트입니다. 학술 연구 및 학업 지원용 시뮬레이터를 무료로 사용할 수 있습니다.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">유용한 링크</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">홈</a></li>
+                        <li><a href="../about.html">소개 및 문의</a></li>
+                        <li><a href="../index.html#checker-section">표절 검사기</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">법적 정책 및 관리</h4>
+                    <ul class="footer-links">
+                        <li><a href="../privacy.html">개인정보처리방침</a></li>
+                        <li><a href="../terms.html">서비스 이용약관</a></li>
+                        <li><a href="../robots.txt">크롤러 정책</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VerifyAI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="../privacy.html">Privacy Policy</a>
+                    <a href="../terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

@@ -1244,3 +1244,98 @@ footer {
     }
 }
 
+/* ==================================================
+   [TOOLS DASHBOARD SPECIAL STYLES]
+   ================================================== */
+
+.tools-tab-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.65rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: var(--transition);
+}
+
+.tools-tab-btn:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tools-tab-btn.active {
+    background: linear-gradient(135deg, rgba(124, 77, 255, 0.15) 0%, rgba(0, 229, 255, 0.1) 100%);
+    border-color: var(--primary);
+    color: var(--secondary);
+    box-shadow: 0 0 15px rgba(124, 77, 255, 0.2);
+    font-weight: 600;
+}
+
+/* Tab Panels showing/hiding */
+.tools-tab-panel {
+    display: none;
+    animation: fadeInTab 0.4s ease-out;
+}
+
+.tools-tab-panel.active {
+    display: block;
+}
+
+@keyframes fadeInTab {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Paper card hover glows */
+.search-paper-card:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 4px 20px rgba(124, 77, 255, 0.15);
+    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Highlights for Cleaner */
+.highlight-ai {
+    border-radius: 3px;
+    transition: var(--transition);
+}
+.highlight-ad {
+    border-radius: 3px;
+    transition: var(--transition);
+}
+
+/* Typing practice animations */
+#type-target-sentence span {
+    transition: all 0.15s ease;
+}
+#type-hidden-input:focus {
+    border-color: var(--secondary) !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+/* Pulse animation for loader indicator */
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+/* Adjustments for inputs inside TOC Balancer */
+.chapter-name-input:focus {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-bottom: 1px solid var(--secondary) !important;
+}
+.chapter-page-input::-webkit-outer-spin-button,
+.chapter-page-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.chapter-page-input {
+    -moz-appearance: textfield;
+}
+
+

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerifyAI - 프리미엄 글쓰기 및 학술 지원 도구함</title>
+    <meta name="description" content="실시간 글자수 세기, 광고성/상투적 문구 필터링, 무료 학술 논문 검색, 목차 분량 밸런서, 한영 타자연습기 등 글쓰기에 필요한 올인원 무료 유틸리티 모음입니다.">
+    <meta name="keywords" content="글자수 세기, 광고문구 제거, 논문 검색, 목차 설계, 타자연습기, PC 최적화, 학술 글쓰기 도구">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://adsencegoogle-5.vercel.app/tools.html">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Adsense Code Placement -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1813961515018381" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="logo-link">
+                VerifyAI<span class="logo-dot"></span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 토글">
+                &#x2630;
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" id="nav-home">홈</a></li>
+                <li><a href="tools.html" class="nav-link active" id="nav-tools">글쓰기 도구</a></li>
+                <li><a href="privacy.html" class="nav-link" id="nav-privacy">개인정보처리방침</a></li>
+                <li><a href="terms.html" class="nav-link" id="nav-terms">이용약관</a></li>
+                <li><a href="about.html" class="nav-link" id="nav-about">소개 및 문의</a></li>
+                <li><a href="index.html#checker-section" class="btn-nav" id="nav-cta">무료 검사기 실행</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Title Section -->
+        <section class="hero" style="padding-bottom: 2rem;">
+            <div class="badge">
+                <span class="logo-dot" style="width:6px; height:6px; background-color: var(--secondary);"></span>
+                학술 글쓰기 보조 유틸리티 센터
+            </div>
+            <h1>연구와 글쓰기의 완성도를 높이는<br><span>VerifyAI 올인원 도구함</span></h1>
+            <p class="hero-subtitle">
+                작업 생산성을 높이고 표절 시비를 줄이기 위해 설계된 필수 웹 유틸리티와 학술 도구를 로그인 없이 즉시 무료로 이용해 보세요.
+            </p>
+        </section>
+
+        <!-- Top Ad slot -->
+        <div class="ad-container" style="margin: 0 auto 2rem auto; max-width: 1200px;">
+            [ ADVERTISEMENT - 상단 광고 영역 ]
+        </div>
+
+        <!-- Utility Dashboard Main Area -->
+        <section class="tools-dashboard-section" style="max-width: 1200px; margin: 0 auto 4rem auto; padding: 0 2rem;">
+            <!-- Tabs Navigation Bar -->
+            <div class="tools-tabs-nav" style="display: flex; gap: 0.5rem; overflow-x: auto; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 2rem;">
+                <button class="tools-tab-btn active" data-tab="char-counter">📊 글자수 세기</button>
+                <button class="tools-tab-btn" data-tab="ad-cleaner">✨ 글쓰기 정제기</button>
+                <button class="tools-tab-btn" data-tab="academic-search">🔍 학술 DB 검색</button>
+                <button class="tools-tab-btn" data-tab="toc-balancer">📐 TOC 분량 밸런서</button>
+                <button class="tools-tab-btn" data-tab="typing-practice">⌨️ 한/영 타자연습</button>
+                <button class="tools-tab-btn" data-tab="pc-cleanup">⚙️ PC 최적화</button>
+            </div>
+
+            <!-- Tab Content Panel Container -->
+            <div class="tools-tab-content-container">
+
+                <!-- 1. 글자수 세기 탭 -->
+                <div class="tools-tab-panel active" id="char-counter">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
+                        <!-- Input Box -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0;">
+                            <div class="checker-header" style="border-bottom: none; margin-bottom: 1rem; padding-bottom: 0;">
+                                <span class="checker-title">실시간 문자 분석기</span>
+                                <button class="btn btn-secondary" id="btn-clear-char" style="padding: 0.4rem 1rem; font-size: 0.85rem;">지우기</button>
+                            </div>
+                            <textarea id="char-input" class="checker-textarea" placeholder="여기에 텍스트를 입력하거나 붙여넣으세요. 공백을 포함한 정확한 통계치가 우측 대시보드에 실시간 갱신됩니다." style="min-height: 350px;"></textarea>
+                        </div>
+                        <!-- Analytics Statistics Dashboard -->
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="score-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; text-align: left; align-items: stretch; min-height: auto;">
+                                <h3 style="font-family:'Outfit'; font-size:1.25rem; font-weight:700; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 0.5rem; color:var(--secondary);">글쓰기 스탯 요약</h3>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: var(--text-muted);">공백 포함 글자수</span>
+                                    <strong style="font-size: 1.25rem;" id="stat-char-with-space">0 자</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: var(--text-muted);">공백 제외 글자수</span>
+                                    <strong style="font-size: 1.25rem;" id="stat-char-no-space">0 자</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: var(--text-muted);">공백 수 (스페이스/엔터)</span>
+                                    <strong style="font-size: 1.1rem; color: var(--text-muted);" id="stat-spaces">0</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: var(--text-muted);">총 단어 수 (Word Count)</span>
+                                    <strong style="font-size: 1.25rem; color: var(--primary);" id="stat-words">0</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: var(--text-muted);">바이트수 (UTF-8 한글 3B)</span>
+                                    <strong style="font-size: 1.1rem;" id="stat-bytes">0 Byte</strong>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--border-color); padding-top: 0.75rem; margin-top: 0.5rem;">
+                                    <span style="color: var(--text-muted);">예상 읽기 소요 시간</span>
+                                    <strong style="font-size: 1.1rem; color: var(--success);" id="stat-reading-time">약 0초</strong>
+                                </div>
+                            </div>
+                            <div class="ad-container" style="width: 100%; height: 150px;">
+                                [ AD ]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 글쓰기 정제기 탭 -->
+                <div class="tools-tab-panel" id="ad-cleaner">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <!-- Input Screen -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0;">
+                            <div class="checker-header" style="border-bottom: none; margin-bottom: 1rem; padding-bottom: 0;">
+                                <span class="checker-title">정제할 원본 글</span>
+                                <div style="display:flex; gap:0.5rem;">
+                                    <button class="btn btn-secondary" id="btn-load-clean-sample" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">샘플 불러오기</button>
+                                    <button class="btn btn-secondary" id="btn-clear-clean" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">지우기</button>
+                                </div>
+                            </div>
+                            <textarea id="clean-input" class="checker-textarea" placeholder="AI 상투어, 부자연스러운 조사, 광고성 홍보 단어가 포함된 초안을 입력해 주세요. (예: 결론적으로, 더 나아가...)" style="min-height: 350px;"></textarea>
+                            <div style="display:flex; gap:0.5rem; margin-top:1rem;">
+                                <button class="btn btn-primary" id="btn-run-clean" style="width:100%;">문장 정제 및 필터링 적용 ⚡</button>
+                            </div>
+                        </div>
+                        <!-- Output Screen -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0; background-color: rgba(255, 255, 255, 0.015);">
+                            <div class="checker-header" style="border-bottom: none; margin-bottom: 1rem; padding-bottom: 0;">
+                                <span class="checker-title">정제 및 순화 완료</span>
+                                <button class="btn btn-secondary" id="btn-copy-clean" style="padding: 0.4rem 1rem; font-size: 0.85rem;">결과 복사</button>
+                            </div>
+                            <div id="clean-output" class="checker-textarea" style="min-height: 350px; background-color: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; overflow-y: auto; white-space: pre-wrap; font-size:0.95rem; line-height:1.7; color: var(--text-main);">정제 완료된 글이 이곳에 표시되며 필터링된 문구가 하이라이트 표시됩니다.</div>
+                            <div id="clean-summary" style="margin-top:1rem; font-size:0.85rem; color: var(--text-muted);">
+                                감지된 유해 요소: <span id="clean-detected-count" style="color: var(--secondary); font-weight:700;">0개</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 학술 DB 검색 탭 -->
+                <div class="tools-tab-panel" id="academic-search">
+                    <div class="checker-card" style="padding: 1.5rem; margin-top: 0;">
+                        <div class="checker-header" style="border-bottom: none; margin-bottom: 1.5rem; padding-bottom: 0; flex-direction:column; align-items:start; gap:0.5rem;">
+                            <span class="checker-title" style="font-size:1.5rem;">글로벌 학술 DB 무료 검색기</span>
+                            <span style="color:var(--text-muted); font-size:0.85rem;">OpenAlex 및 Semantic Scholar 오픈 데이터와 연동하여 국내외 우수 학술지 논문 데이터를 즉시 검색합니다.</span>
+                        </div>
+                        <!-- Search Box UI -->
+                        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <input type="text" id="search-query" class="checker-textarea" placeholder="검색하고 싶은 논문 제목, 키워드, 혹은 저자명을 입력하세요. (예: Deep Learning, 자기표절)" style="min-height: 50px; height: 50px; padding: 0.75rem 1rem; font-size:1rem; margin-bottom:0;">
+                            <button class="btn btn-primary" id="btn-search-run" style="height: 50px; width: 140px; font-weight:700;">논문 검색</button>
+                        </div>
+
+                        <!-- Results display container -->
+                        <div id="search-results-box" style="min-height: 250px; border:1px solid var(--border-color); border-radius:12px; background-color: rgba(0,0,0,0.15); padding:1.5rem; overflow-y:auto; max-height: 550px;">
+                            <div style="text-align: center; color:var(--text-muted); padding-top:4rem;" id="search-placeholder">
+                                <span style="font-size:3rem; display:block; margin-bottom:1rem;">📚</span>
+                                키워드를 입력하고 논문 검색을 시작해 보세요. 출처 확인 및 서지 인용을 즉각 생성할 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. TOC 분량 밸런서 탭 -->
+                <div class="tools-tab-panel" id="toc-balancer">
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
+                        <!-- Configuration -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; gap:1.25rem;">
+                            <span class="checker-title">TOC 기본 정보 설정</span>
+                            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                                <label style="font-size:0.85rem; color:var(--text-muted);">학술 논문 / 보고서 제목</label>
+                                <input type="text" id="toc-title" class="checker-textarea" placeholder="제목을 입력하세요" style="min-height:40px; height:40px; padding:0.5rem; margin-bottom:0;" value="생성형 인공지능을 활용한 학술 연구 윤리 검증">
+                            </div>
+                            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+                                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                                    <label style="font-size:0.85rem; color:var(--text-muted);">목표 페이지 수</label>
+                                    <input type="number" id="toc-target-pages" class="checker-textarea" style="min-height:40px; height:40px; padding:0.5rem; margin-bottom:0;" value="80" min="5" max="300">
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:0.4rem;">
+                                    <label style="font-size:0.85rem; color:var(--text-muted);">학위 과정</label>
+                                    <select id="toc-degree" class="checker-textarea" style="min-height:40px; height:40px; padding:0.5rem; margin-bottom:0; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main);">
+                                        <option value="bachelor">학사 (보고서)</option>
+                                        <option value="master" selected>석사 학위</option>
+                                        <option value="doctor">박사 학위</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="btn-toc-init" style="width:100%;">기본 목차 템플릿 생성 📐</button>
+                            <button class="btn btn-secondary" id="btn-toc-export" style="width:100%;">TOC 설계 마크다운(.md) 파일 추출 💾</button>
+                        </div>
+
+                        <!-- Balancer Workspace -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0;">
+                            <div class="checker-header" style="border-bottom: none; margin-bottom: 1.5rem; padding-bottom: 0;">
+                                <span class="checker-title">장(Chapter)별 페이지 밸런서</span>
+                            </div>
+                            
+                            <!-- Gauge Budget Info -->
+                            <div class="toc-budget-info" style="background-color: rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:1rem; margin-bottom:1.5rem; display:flex; flex-direction:column; gap:0.5rem;">
+                                <div style="display:flex; justify-content:space-between; font-size:0.9rem;">
+                                    <span style="color:var(--text-muted);">총 할당량 합산:</span>
+                                    <strong><span id="toc-allocated-sum">0</span> / <span id="toc-target-sum">80</span> 페이지</strong>
+                                </div>
+                                <div style="width:100%; height:8px; background-color:rgba(255,255,255,0.05); border-radius:4px; overflow:hidden;">
+                                    <div id="toc-gauge-bar" style="width: 0%; height:100%; background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%); transition: var(--transition);"></div>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <span id="toc-allocated-status" class="badge" style="padding:0.25rem 0.5rem; font-size:0.75rem;">설계 대기 중</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">* 목표 수와 할당된 수가 일치하면 완벽한 분량 밸런싱이 완성됩니다.</span>
+                                </div>
+                            </div>
+
+                            <!-- Interactive List of Chapters -->
+                            <div id="toc-chapters-container" style="display:flex; flex-direction:column; gap:0.75rem; min-height:150px;">
+                                <div style="text-align:center; color:var(--text-muted); padding-top:2rem;" id="toc-empty-placeholder">
+                                    좌측 '기본 목차 템플릿 생성' 버튼을 누르시면 실시간 분량 게이지 시뮬레이션이 활성화됩니다.
+                                </div>
+                            </div>
+
+                            <button class="btn btn-secondary" id="btn-toc-add-chapter" style="margin-top:1.5rem; display:none; width:100%; border-style:dashed;">+ 새로운 장 추가</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. 한/영 타자연습 탭 -->
+                <div class="tools-tab-panel" id="typing-practice">
+                    <div class="checker-card" style="padding: 1.5rem; margin-top: 0;">
+                        <div class="checker-header" style="border-bottom: none; margin-bottom: 1.5rem; padding-bottom: 0;">
+                            <span class="checker-title">한/영 단문 타자 연습기</span>
+                            <!-- Language Selector -->
+                            <div style="display:flex; gap:0.5rem; align-items:center;">
+                                <button class="btn btn-secondary active" id="btn-type-lang-ko" style="padding: 0.4rem 1rem; font-size: 0.85rem;">한글</button>
+                                <button class="btn btn-secondary" id="btn-type-lang-en" style="padding: 0.4rem 1rem; font-size: 0.85rem;">영어 (English)</button>
+                            </div>
+                        </div>
+
+                        <!-- Typing Statistics Dashboard -->
+                        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+                            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem; text-align:center;">
+                                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;">현재 타수 (CPM)</div>
+                                <strong style="font-size:1.5rem; color:var(--secondary);" id="type-stat-cpm">0</strong>
+                            </div>
+                            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem; text-align:center;">
+                                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;">최고 타수</div>
+                                <strong style="font-size:1.5rem; color:var(--primary);" id="type-stat-max-cpm">0</strong>
+                            </div>
+                            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem; text-align:center;">
+                                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;">정확도</div>
+                                <strong style="font-size:1.5rem; color:var(--success);" id="type-stat-accuracy">100%</strong>
+                            </div>
+                            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem; text-align:center;">
+                                <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.25rem;">진행 문장 수</div>
+                                <strong style="font-size:1.5rem;" id="type-stat-progress">1 / 10</strong>
+                            </div>
+                        </div>
+
+                        <!-- Main Typing Display Card -->
+                        <div style="background-color:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:2rem; margin-bottom:1.5rem; display:flex; flex-direction:column; gap:1.25rem; position:relative;">
+                            <!-- Target Sentence -->
+                            <div id="type-target-sentence" style="font-family:'Noto Sans KR', sans-serif; font-size:1.5rem; font-weight:500; color:var(--text-muted); min-height:40px; letter-spacing:1px; line-height:1.5; white-space: pre-wrap; word-break: break-all;">
+                                <!-- Target sentence dynamically inserted with span tags -->
+                            </div>
+                            <!-- Live visual input feedback line -->
+                            <div id="type-feedback-line" style="font-family:'Noto Sans KR', sans-serif; font-size:1.5rem; font-weight:500; min-height:40px; letter-spacing:1px; line-height:1.5; word-break: break-all; color: var(--secondary); border-top:1px dashed var(--border-color); padding-top:0.75rem;">
+                                <!-- Character representation matched with typing -->
+                            </div>
+                            <!-- Invisible/Focused Input field -->
+                            <input type="text" id="type-hidden-input" style="width:100%; background:transparent; border:1px solid var(--border-color); border-radius:8px; color:var(--text-main); font-size:1.1rem; padding:0.75rem 1rem; font-family:inherit; outline:none; transition:var(--transition);" placeholder="화면을 마우스로 클릭하고 타자를 입력하세요..." autocomplete="off">
+                        </div>
+
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.8rem; color:var(--text-muted);">* 한 글자씩 정확하게 타이핑해 주세요. 문장을 다 치면 Enter 키를 누르거나 자동으로 다음 문장으로 넘어갑니다.</span>
+                            <button class="btn btn-secondary" id="btn-type-reset" style="padding:0.4rem 1rem; font-size:0.85rem;">다시 시작 (Reset)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. PC 최적화 탭 -->
+                <div class="tools-tab-panel" id="pc-cleanup">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
+                        <!-- Utility details -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; gap:1.25rem;">
+                            <div style="border-bottom: 1px solid var(--border-color); padding-bottom:0.75rem;">
+                                <span class="checker-title" style="font-size:1.5rem;">PC 최적화 및 광고 알림 삭제 스크립트</span>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">윈도우 환경 최적화 및 스패미한 Chrome 광고 알림 팝업 사이트를 원클릭 차단해 주는 로컬 PC 안전 유틸리티입니다.</p>
+                            </div>
+
+                            <div style="display:flex; flex-direction:column; gap:0.8rem; font-size:0.95rem;">
+                                <strong>💡 주요 최적화 내용 및 수행 작업:</strong>
+                                <ul style="list-style:disc; margin-left:1.5rem; display:flex; flex-direction:column; gap:0.5rem; color:var(--text-main);">
+                                    <li><strong style="color:var(--secondary);">Chrome 스팸 광고 차단</strong>: 브라우저 환경설정을 건드려 악성 팝업 알림을 강제로 발송하는 주범 사이트들(softonic.kr, edimakor.ai 등)을 완전히 차단(Block, '2') 모드로 일괄 변경합니다.</li>
+                                    <li><strong>시작 프로그램 청소</strong>: ALNotify(알약 업데이트 알림), Opera GX Assistant 등 컴퓨터 시동 속도를 지연시키는 상주 유출 백그라운드 프로세스의 작동을 해제합니다.</li>
+                                    <li><strong>시스템 정크 파일 일소</strong>: 불필요하게 윈도우 스토리지 공간을 야금야금 좀먹고 있는 디렉토리 임시 폴더(%TEMP%) 공간의 임시 파일들을 안전하게 청소합니다.</li>
+                                </ul>
+                            </div>
+
+                            <div style="background-color:rgba(255,234,0,0.05); border:1px solid var(--warning); border-radius:8px; padding:1rem; font-size:0.85rem; line-height:1.5; color:var(--text-main);">
+                                ⚠️ <strong>주의 및 사용 방법</strong>: 
+                                이 최적화 프로그램은 윈도우 OS의 명령 프롬프트(CMD) 및 파워쉘을 제어해야 하므로 **관리자 권한** 실행 권한이 필요합니다. 다운로드한 `.bat` 파일을 마우스 우클릭하여 **'관리자 권한으로 실행'**을 클릭하여 이용해 주십시오. (해당 유틸리티는 오픈소스로 배포되어 악성 백도어가 전혀 없으며 보안상 안전합니다)
+                            </div>
+                        </div>
+
+                        <!-- Sidebar Actions -->
+                        <div style="display:flex; flex-direction:column; gap:1rem;">
+                            <div class="score-card" style="padding: 2rem 1.5rem; display: flex; flex-direction: column; gap:1.5rem; text-align: center; align-items: stretch; min-height: auto;">
+                                <span style="font-size:3rem;">🛡️</span>
+                                <h3 style="font-family:'Outfit'; font-size:1.3rem;">PC 최적화 실행기</h3>
+                                <p style="font-size:0.85rem; color:var(--text-muted); line-height:1.5;">설명에 동의하시고 로컬 PC 환경을 가볍게 정비하고 싶다면 아래 버튼을 클릭하십시오.</p>
+                                <a href="광고문수 삭제/PC_Cleanup_Utility.bat" download="PC_Cleanup_Utility.bat" class="btn btn-primary" id="btn-download-bat" style="display:block; text-align:center; padding:0.75rem; font-weight:700; width:100%;">
+                                    최적화 배치파일 다운로드 (.bat)
+                                </a>
+                                <span style="font-size:0.75rem; color:var(--text-muted);">버전: v1.0 | 스토리지: 4.5 KB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bottom Ad slot -->
+        <div class="ad-container" style="margin: 0 auto 4rem auto; max-width: 1200px;">
+            [ ADVERTISEMENT - 하단 광고 영역 ]
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+                        VerifyAI<span class="logo-dot"></span>
+                    </a>
+                    <p>VerifyAI는 지식과 연구의 진실성을 지키기 위해 노력하는 독립적인 오픈 소스 프로젝트입니다. 학술 연구 및 학업 지원용 시뮬레이터를 무료로 사용할 수 있습니다.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">유용한 링크</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">홈</a></li>
+                        <li><a href="tools.html">글쓰기 도구</a></li>
+                        <li><a href="about.html">소개 및 문의</a></li>
+                        <li><a href="index.html#checker-section">표절 검사기</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">법적 정책 및 관리</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">개인정보처리방침</a></li>
+                        <li><a href="terms.html">서비스 이용약관</a></li>
+                        <li><a href="robots.txt">크롤러 정책</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VerifyAI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/tools.js"></script>
+</body>
+</html>

@@ -54,7 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
         typeTargetSentence: document.getElementById('type-target-sentence'),
         typeFeedbackLine: document.getElementById('type-feedback-line'),
         typeHiddenInput: document.getElementById('type-hidden-input'),
-        btnTypeReset: document.getElementById('btn-type-reset')
+        btnTypeReset: document.getElementById('btn-type-reset'),
+        
+        // PC Cleanup Source Code Copy
+        btnCopyBatSource: document.getElementById('btn-copy-bat-source'),
+        batSourceCode: document.getElementById('bat-source-code')
     };
 
     // --------------------------------------------------
@@ -644,4 +648,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // 기본 로드 설정
     updateCharStats();
     loadSentence();
+
+    // --------------------------------------------------
+    // 7. PC Cleanup Source Copy Logic
+    // --------------------------------------------------
+    if (els.btnCopyBatSource && els.batSourceCode) {
+        els.btnCopyBatSource.addEventListener('click', () => {
+            const codeText = els.batSourceCode.textContent;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const originalText = els.btnCopyBatSource.textContent;
+                els.btnCopyBatSource.textContent = '복사 완료! ✓';
+                els.btnCopyBatSource.style.backgroundColor = 'var(--success)';
+                els.btnCopyBatSource.style.color = '#000';
+                
+                setTimeout(() => {
+                    els.btnCopyBatSource.textContent = originalText;
+                    els.btnCopyBatSource.style.backgroundColor = '';
+                    els.btnCopyBatSource.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('소스코드 복사 실패:', err);
+                alert('복사에 실패했습니다. 소스코드를 직접 드래그해서 복사해 주세요.');
+            });
+        });
+    }
 });

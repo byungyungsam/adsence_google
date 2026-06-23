@@ -74,7 +74,7 @@ function tuneFile(filePath) {
 }
 
 // 대상 메인 서브 HTML 파일들
-const mainSubFiles = ['privacy.html', 'terms.html', 'about.html'];
+const mainSubFiles = ['index.html', 'privacy.html', 'terms.html', 'about.html', 'tools.html'];
 mainSubFiles.forEach(file => {
     const fullPath = path.join(rootDir, file);
     if (fs.existsSync(fullPath)) {

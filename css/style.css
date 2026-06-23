@@ -863,7 +863,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .menu-toggle {
         display: block;
     }
@@ -883,6 +883,9 @@ footer {
     .nav-menu.active {
         display: flex;
     }
+}
+
+@media (max-width: 768px) {
     .checker-card {
         padding: 1.5rem;
     }

@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Feedback status
         if (currentSum === targetPages) {
-            els.tocAllocatedStatus.textContent = '분량 밸런싱 최적 상태 (일치)';
+            els.tocAllocatedStatus.textContent = '분량 계획 최적 상태 (일치)';
             els.tocAllocatedStatus.style.backgroundColor = 'var(--success)';
             els.tocAllocatedStatus.style.color = '#000';
             els.tocGaugeBar.style.background = 'var(--success)';
@@ -432,8 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let markdown = `# ${title}\n\n`;
         markdown += `* **본문 목표 페이지**: 총 ${targetPages} 페이지\n`;
         markdown += `* **작성 학위**: ${els.tocDegree.options[els.tocDegree.selectedIndex].text}\n`;
-        markdown += `* **설계 도구**: VerifyAI TOC Balancer\n\n`;
-        markdown += `## 📐 세부 논문 목차 및 분량 설계안\n\n`;
+        markdown += `* **설계 도구**: VerifyAI 목차 분량 계획기\n\n`;
+        markdown += `## 📐 세부 논문 목차 및 분량 계획안\n\n`;
 
         chaptersData.forEach(chapter => {
             markdown += `- **${chapter.name}** : \`${chapter.pages} p\` 할당\n`;
@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8;' });
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `${title.replace(/\s/g, '_')}_TOC_Plan.md`;
+        link.download = `${title.replace(/\s/g, '_')}_목차_계획안.md`;
         link.click();
     });
 

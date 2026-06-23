@@ -59,7 +59,7 @@
                 <button class="tools-tab-btn active" data-tab="char-counter">📊 글자수 세기</button>
                 <button class="tools-tab-btn" data-tab="ad-cleaner">✨ 글쓰기 정제기</button>
                 <button class="tools-tab-btn" data-tab="academic-search">🔍 학술 DB 검색</button>
-                <button class="tools-tab-btn" data-tab="toc-balancer">📐 TOC 분량 밸런서</button>
+                <button class="tools-tab-btn" data-tab="toc-balancer">📐 목차 분량 계획기</button>
                 <button class="tools-tab-btn" data-tab="typing-practice">⌨️ 한/영 타자연습</button>
                 <button class="tools-tab-btn" data-tab="pc-cleanup">⚙️ PC 최적화</button>
             </div>
@@ -168,12 +168,12 @@
                     </div>
                 </div>
 
-                <!-- 4. TOC 분량 밸런서 탭 -->
+                <!-- 4. 목차 분량 계획기 탭 -->
                 <div class="tools-tab-panel" id="toc-balancer">
                     <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: start;">
                         <!-- Configuration -->
                         <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; gap:1.25rem;">
-                            <span class="checker-title">TOC 기본 정보 설정</span>
+                            <span class="checker-title">목차 기본 정보 설정</span>
                             <div style="display:flex; flex-direction:column; gap:0.4rem;">
                                 <label style="font-size:0.85rem; color:var(--text-muted);">학술 논문 / 보고서 제목</label>
                                 <input type="text" id="toc-title" class="checker-textarea" placeholder="제목을 입력하세요" style="min-height:40px; height:40px; padding:0.5rem; margin-bottom:0;" value="생성형 인공지능을 활용한 학술 연구 윤리 검증">
@@ -193,13 +193,13 @@
                                 </div>
                             </div>
                             <button class="btn btn-primary" id="btn-toc-init" style="width:100%;">기본 목차 템플릿 생성 📐</button>
-                            <button class="btn btn-secondary" id="btn-toc-export" style="width:100%;">TOC 설계 마크다운(.md) 파일 추출 💾</button>
+                            <button class="btn btn-secondary" id="btn-toc-export" style="width:100%;">목차 설계 마크다운(.md) 파일 추출 💾</button>
                         </div>
 
                         <!-- Balancer Workspace -->
                         <div class="checker-card" style="padding: 1.5rem; margin-top: 0;">
                             <div class="checker-header" style="border-bottom: none; margin-bottom: 1.5rem; padding-bottom: 0;">
-                                <span class="checker-title">장(Chapter)별 페이지 밸런서</span>
+                                <span class="checker-title">장(Chapter)별 페이지 분량 계획기</span>
                             </div>
                             
                             <!-- Gauge Budget Info -->
@@ -213,7 +213,7 @@
                                 </div>
                                 <div style="display:flex; justify-content:space-between; align-items:center;">
                                     <span id="toc-allocated-status" class="badge" style="padding:0.25rem 0.5rem; font-size:0.75rem;">설계 대기 중</span>
-                                    <span style="font-size:0.75rem; color:var(--text-muted);">* 목표 수와 할당된 수가 일치하면 완벽한 분량 밸런싱이 완성됩니다.</span>
+                                    <span style="font-size:0.75rem; color:var(--text-muted);">* 목표 수와 할당된 수가 일치하면 완벽한 분량 계획이 완성됩니다.</span>
                                 </div>
                             </div>
 

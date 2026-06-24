@@ -34,6 +34,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link" id="nav-home">홈</a></li>
                 <li><a href="tools.html" class="nav-link active" id="nav-tools">글쓰기 도구</a></li>
+                <li><a href="shelter.html" class="nav-link" id="nav-shelter">쉼터</a></li>
                 <li><a href="privacy.html" class="nav-link" id="nav-privacy">개인정보처리방침</a></li>
                 <li><a href="terms.html" class="nav-link" id="nav-terms">이용약관</a></li>
                 <li><a href="about.html" class="nav-link" id="nav-about">소개 및 문의</a></li>
@@ -69,6 +70,7 @@
                 <button class="tools-tab-btn" data-tab="academic-search">🔍 학술 DB 검색</button>
                 <button class="tools-tab-btn" data-tab="toc-balancer">📐 목차 분량 계획기</button>
                 <button class="tools-tab-btn" data-tab="typing-practice">⌨️ 한/영 타자연습</button>
+                <button class="tools-tab-btn" data-tab="academic-calc">🧮 학술 계산기</button>
                 <button class="tools-tab-btn" data-tab="pc-cleanup">⚙️ PC 최적화</button>
             </div>
 
@@ -290,7 +292,124 @@
                     </div>
                 </div>
 
-                <!-- 6. PC 최적화 탭 -->
+                <!-- 6. 학술 계산기 탭 -->
+                <div class="tools-tab-panel" id="academic-calc">
+                    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: start;">
+                        <!-- Left: Scientific/Function Calculator -->
+                        <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; gap:1.25rem;">
+                            <div style="border-bottom: 1px solid var(--border-color); padding-bottom:0.75rem;">
+                                <span class="checker-title" style="font-size:1.5rem;">학술용 수식/함수 계산기</span>
+                                <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">학술 수식 연산 및 함수 계산기입니다. 숫자패드와 연산 단추, 키보드로 직접 입력이 가능합니다.</p>
+                            </div>
+
+                            <!-- Calculator Screen -->
+                            <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; position: relative;">
+                                <!-- Formula History / Temp display -->
+                                <div id="calc-history" style="font-size: 0.8rem; color: var(--text-muted); text-align: right; min-height: 1.2rem; overflow-x: auto; white-space: nowrap; font-family: monospace;"></div>
+                                <!-- Current Input/Result Display -->
+                                <div id="calc-display" style="font-size: 1.75rem; font-weight: 700; color: var(--text-main); text-align: right; min-height: 2.2rem; overflow-x: auto; white-space: nowrap; font-family: monospace; margin-top: 0.25rem;">0</div>
+                            </div>
+
+                            <!-- Calculator Buttons Grid -->
+                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; font-family: monospace;">
+                                <!-- Row 1: Trig & Functions -->
+                                <button class="btn btn-secondary calc-btn" data-val="sin" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">sin</button>
+                                <button class="btn btn-secondary calc-btn" data-val="cos" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">cos</button>
+                                <button class="btn btn-secondary calc-btn" data-val="tan" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">tan</button>
+                                <button class="btn btn-secondary calc-btn" data-val="C" style="padding: 0.75rem 0.25rem; font-size: 0.85rem; color: var(--danger); font-weight: bold;">C</button>
+                                <button class="btn btn-secondary calc-btn" data-val="backspace" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">⌫</button>
+
+                                <!-- Row 2: Functions & Math Constants -->
+                                <button class="btn btn-secondary calc-btn" data-val="log" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">log</button>
+                                <button class="btn btn-secondary calc-btn" data-val="ln" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">ln</button>
+                                <button class="btn btn-secondary calc-btn" data-val="sqrt" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">√</button>
+                                <button class="btn btn-secondary calc-btn" data-val="^" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">^</button>
+                                <button class="btn btn-secondary calc-btn" data-val="/" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; font-weight: bold;">÷</button>
+
+                                <!-- Row 3: Numbers & Operators -->
+                                <button class="btn btn-secondary calc-btn" data-val="7" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">7</button>
+                                <button class="btn btn-secondary calc-btn" data-val="8" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">8</button>
+                                <button class="btn btn-secondary calc-btn" data-val="9" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">9</button>
+                                <button class="btn btn-secondary calc-btn" data-val="(" style="padding: 0.75rem 0.25rem; font-size: 1rem;">(</button>
+                                <button class="btn btn-secondary calc-btn" data-val="*" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; font-weight: bold;">×</button>
+
+                                <!-- Row 4: Numbers & Operators -->
+                                <button class="btn btn-secondary calc-btn" data-val="4" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">4</button>
+                                <button class="btn btn-secondary calc-btn" data-val="5" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">5</button>
+                                <button class="btn btn-secondary calc-btn" data-val="6" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">6</button>
+                                <button class="btn btn-secondary calc-btn" data-val=")" style="padding: 0.75rem 0.25rem; font-size: 1rem;">)</button>
+                                <button class="btn btn-secondary calc-btn" data-val="-" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; font-weight: bold;">-</button>
+
+                                <!-- Row 5: Numbers, Constants, Equals -->
+                                <button class="btn btn-secondary calc-btn" data-val="1" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">1</button>
+                                <button class="btn btn-secondary calc-btn" data-val="2" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">2</button>
+                                <button class="btn btn-secondary calc-btn" data-val="3" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">3</button>
+                                <button class="btn btn-secondary calc-btn" data-val="pi" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">π</button>
+                                <button class="btn btn-secondary calc-btn" data-val="+" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; font-weight: bold;">+</button>
+
+                                <!-- Row 6: Zero, Dot, Constants, Equal -->
+                                <button class="btn btn-secondary calc-btn" data-val="0" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03); grid-column: span 2;">0</button>
+                                <button class="btn btn-secondary calc-btn" data-val="." style="padding: 0.75rem 0.25rem; font-size: 1.1rem; background-color: rgba(255,255,255,0.03);">.</button>
+                                <button class="btn btn-secondary calc-btn" data-val="e" style="padding: 0.75rem 0.25rem; font-size: 0.85rem;">e</button>
+                                <button class="btn btn-primary calc-btn" data-val="=" style="padding: 0.75rem 0.25rem; font-size: 1.1rem; font-weight: bold; background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);">=</button>
+                            </div>
+                        </div>
+
+                        <!-- Right: Manuscript Sheet Calculator & Document Page Estimator -->
+                        <div style="display:flex; flex-direction:column; gap:2rem;">
+                            <!-- 200-character Manuscript Calculator -->
+                            <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; gap:1rem;">
+                                <span class="checker-title" style="font-size:1.25rem;">원고지 매수 계산기</span>
+                                <textarea id="calc-manuscript-input" class="checker-textarea" placeholder="여기에 글을 입력하면 200자 원고지 기준으로 매수가 실시간 계산됩니다." style="min-height: 120px; font-size:0.9rem; padding: 0.5rem;"></textarea>
+                                <div style="display:flex; justify-content:space-between; align-items:center; background-color:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem;">
+                                    <span style="font-size:0.85rem; color:var(--text-muted);">원고지 환산 분량</span>
+                                    <strong style="font-size:1.2rem; color:var(--secondary);"><span id="calc-manuscript-sheets">0</span> 장 <span style="font-size:0.85rem; font-weight:normal; color:var(--text-muted);">(<span id="calc-manuscript-chars">0</span>자)</span></strong>
+                                </div>
+                            </div>
+
+                            <!-- Page Estimator -->
+                            <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; gap:1rem;">
+                                <span class="checker-title" style="font-size:1.25rem;">문서 페이지 분량 예측기</span>
+                                
+                                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem;">
+                                    <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                                        <label style="font-size:0.75rem; color:var(--text-muted);">문서 프로그램 규격</label>
+                                        <select id="calc-est-format" class="checker-textarea" style="min-height:35px; height:35px; padding:0.25rem; margin-bottom:0; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); font-size:0.85rem;">
+                                            <option value="hwp" selected>아래한글 (HWP)</option>
+                                            <option value="word">MS Word (Word)</option>
+                                        </select>
+                                    </div>
+                                    <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                                        <label style="font-size:0.75rem; color:var(--text-muted);">글자 크기 (Font Size)</label>
+                                        <select id="calc-est-fontsize" class="checker-textarea" style="min-height:35px; height:35px; padding:0.25rem; margin-bottom:0; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); font-size:0.85rem;">
+                                            <option value="10" selected>10 pt (표준)</option>
+                                            <option value="11">11 pt</option>
+                                            <option value="12">12 pt</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div style="display:grid; grid-template-columns: 1fr; gap:0.75rem;">
+                                    <div style="display:flex; flex-direction:column; gap:0.3rem;">
+                                        <label style="font-size:0.75rem; color:var(--text-muted);">줄간격 (Line Spacing)</label>
+                                        <select id="calc-est-spacing" class="checker-textarea" style="min-height:35px; height:35px; padding:0.25rem; margin-bottom:0; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); font-size:0.85rem;">
+                                            <option value="1.6" selected>160% (일반 보고서)</option>
+                                            <option value="1.8">180% (논문 표준)</option>
+                                            <option value="2.0">200% (여유 있음)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex; justify-content:space-between; align-items:center; background-color:rgba(255,255,255,0.02); border:1px solid var(--border-color); border-radius:8px; padding:0.75rem; margin-top:0.5rem;">
+                                    <span style="font-size:0.85rem; color:var(--text-muted);">예측 문서 분량</span>
+                                    <strong style="font-size:1.25rem; color:var(--primary);">약 <span id="calc-est-pages">0.0</span> 페이지</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. PC 최적화 탭 -->
                 <div class="tools-tab-panel" id="pc-cleanup">
                     <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
                         <!-- Utility details -->

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerifyAI - 학술 쉼터 및 두뇌 퍼즐 게임</title>
+    <meta name="description" content="논문 작성과 리서치 중 지친 머리를 식힐 수 있는 무료 퍼즐 게임 공간입니다. 지뢰찾기(초급/중급/고급), 스도쿠, 2048 게임을 설치나 로그인 없이 바로 즐겨보세요.">
+    <meta name="keywords" content="지뢰찾기, 스도쿠, 2048 게임, 두뇌 게임, 논문 작성 휴식, 학술 쉼터, 무료 웹게임">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://adsencegoogle-5.vercel.app/shelter.html">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/games.css">
+    <!-- Google Adsense Code Placement -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1813961515018381" crossorigin="anonymous"></script>
+
+    <!-- Open Graph Tags (SNS 공유 최적화) -->
+    <meta property="og:title" content="VerifyAI - 학술 쉼터 및 두뇌 퍼즐 게임">
+    <meta property="og:description" content="논문 작성과 리서치 중 지친 머리를 식힐 수 있는 무료 퍼즐 게임 공간입니다. 지뢰찾기, 스도쿠, 2048 게임을 설치 없이 즐겨보세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adsencegoogle-5.vercel.app/shelter.html">
+    <meta property="og:image" content="https://adsencegoogle-5.vercel.app/images/logo-og.png">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo" id="logo-link">
+                VerifyAI<span class="logo-dot"></span>
+            </a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="메뉴 토글">
+                &#x2630;
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link" id="nav-home">홈</a></li>
+                <li><a href="tools.html" class="nav-link" id="nav-tools">글쓰기 도구</a></li>
+                <li><a href="shelter.html" class="nav-link active" id="nav-shelter">쉼터</a></li>
+                <li><a href="privacy.html" class="nav-link" id="nav-privacy">개인정보처리방침</a></li>
+                <li><a href="terms.html" class="nav-link" id="nav-terms">이용약관</a></li>
+                <li><a href="about.html" class="nav-link" id="nav-about">소개 및 문의</a></li>
+                <li><a href="index.html#checker-section" class="btn-nav" id="nav-cta">무료 검사기 실행</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Title Section -->
+        <section class="hero" style="padding-bottom: 2rem;">
+            <div class="badge">
+                <span class="logo-dot" style="width:6px; height:6px; background-color: var(--success);"></span>
+                학술 연구용 쉼터 (Brain Playroom)
+            </div>
+            <h1>논문 쓰다 머리 식힐 땐,<br><span>VerifyAI 학술 쉼터</span></h1>
+            <p class="hero-subtitle">
+                반복되는 타자 입력과 자료 검색으로 피로해진 뇌를 가볍게 풀어보세요. 지능과 집중력을 자극하면서 기분 전환을 돕는 두뇌 퍼즐 게임 3종을 로그인 없이 즉시 즐길 수 있습니다.
+            </p>
+        </section>
+
+        <!-- Top Ad slot -->
+        <div class="ad-container" style="margin: 0 auto 2rem auto; max-width: 1200px;">
+            [ ADVERTISEMENT - 상단 광고 영역 ]
+        </div>
+
+        <!-- Games Dashboard Main Area -->
+        <section class="games-dashboard-section" style="max-width: 1000px; margin: 0 auto 4rem auto; padding: 0 2rem;">
+            <!-- Tabs Navigation Bar -->
+            <div class="tools-tabs-nav" style="display: flex; gap: 0.5rem; overflow-x: auto; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 2rem;">
+                <button class="tools-tab-btn active" data-tab="minesweeper">💣 지뢰찾기 (Minesweeper)</button>
+                <button class="tools-tab-btn" data-tab="sudoku">🧩 학술 스도쿠 (Sudoku)</button>
+                <button class="tools-tab-btn" data-tab="game-2048">🔢 2048 퍼즐 (2048)</button>
+            </div>
+
+            <!-- Tab Content Panel Container -->
+            <div class="tools-tab-content-container">
+
+                <!-- 1. 지뢰찾기 탭 -->
+                <div class="tools-tab-panel active" id="minesweeper">
+                    <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; align-items:center; gap:1.25rem;">
+                        <div style="border-bottom: 1px solid var(--border-color); padding-bottom:0.75rem; width:100%; text-align:left;">
+                            <span class="checker-title" style="font-size:1.4rem;">💣 클래식 지뢰찾기</span>
+                            <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">지뢰를 피해 모든 안전한 칸을 밝혀보세요. 좌클릭은 칸 오픈, 우클릭(또는 깃발 버튼 활성화 후 클릭)은 깃발 표시입니다.</p>
+                        </div>
+
+                        <!-- Minesweeper Controls -->
+                        <div class="game-controls-bar" style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:1rem;">
+                            <div style="display:flex; gap:0.5rem; align-items:center;">
+                                <label style="font-size:0.85rem; color:var(--text-muted);">난이도:</label>
+                                <select id="mine-difficulty" class="checker-textarea" style="min-height:35px; height:35px; width:100px; padding:0.25rem; margin-bottom:0; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); font-size:0.85rem;">
+                                    <option value="easy" selected>초급 (9x9)</option>
+                                    <option value="medium">중급 (16x16)</option>
+                                    <option value="hard">고급 (30x16)</option>
+                                </select>
+                            </div>
+
+                            <div style="display:flex; gap:1rem; align-items:center; font-family:monospace; font-size:1.1rem;">
+                                <span>🚩 <strong id="mine-flag-count" style="color:var(--secondary);">0</strong>/<strong id="mine-total-count">10</strong></span>
+                                <span>⏱️ <strong id="mine-timer" style="color:var(--primary);">0</strong>초</span>
+                            </div>
+
+                            <div style="display:flex; gap:0.5rem;">
+                                <!-- Mobile Flag Toggle -->
+                                <button class="btn btn-secondary" id="btn-mine-flag-toggle" style="padding:0.4rem 0.8rem; font-size:0.85rem;">🚩 모드 OFF</button>
+                                <button class="btn btn-primary" id="btn-mine-reset" style="padding:0.4rem 1rem; font-size:0.85rem; font-weight:700;">재시작 🔄</button>
+                            </div>
+                        </div>
+
+                        <!-- Minesweeper Board (Horizontal Scrollable for large grids) -->
+                        <div style="width:100%; overflow-x:auto; background-color:rgba(0,0,0,0.2); border:1px solid var(--border-color); border-radius:8px; padding:1rem; display:flex; justify-content:center;">
+                            <div id="minesweeper-board" class="mine-board-grid"></div>
+                        </div>
+
+                        <div style="width:100%; font-size:0.8rem; color:var(--text-muted); text-align:left; line-height:1.5;">
+                            * **PC 단축키**: 칸을 우클릭하면 지뢰 깃발을 꽂거나 뺄 수 있습니다.<br>
+                            * **모바일 사용자**: 우측 상단의 `🚩 모드` 버튼을 활성화(ON)하면 터치 시 칸을 열지 않고 깃발을 꽂을 수 있어 편리합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. 스도쿠 탭 -->
+                <div class="tools-tab-panel" id="sudoku">
+                    <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; align-items:center; gap:1.25rem;">
+                        <div style="border-bottom: 1px solid var(--border-color); padding-bottom:0.75rem; width:100%; text-align:left;">
+                            <span class="checker-title" style="font-size:1.4rem;">🧩 논리 스도쿠</span>
+                            <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">가로, 세로, 그리고 3x3 격자안에 1부터 9까지의 숫자가 중복 없이 들어가도록 배치해 보세요.</p>
+                        </div>
+
+                        <!-- Sudoku Controls -->
+                        <div class="game-controls-bar" style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:1rem;">
+                            <div style="display:flex; gap:0.5rem; align-items:center;">
+                                <label style="font-size:0.85rem; color:var(--text-muted);">난이도:</label>
+                                <select id="sudoku-difficulty" class="checker-textarea" style="min-height:35px; height:35px; width:90px; padding:0.25rem; margin-bottom:0; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-main); font-size:0.85rem;">
+                                    <option value="easy" selected>쉬움</option>
+                                    <option value="medium">보통</option>
+                                    <option value="hard">어려움</option>
+                                </select>
+                            </div>
+
+                            <div style="display:flex; gap:1rem; align-items:center; font-family:monospace; font-size:1rem;">
+                                <span>⏱️ <strong id="sudoku-timer" style="color:var(--primary);">0</strong>초</span>
+                                <span>오류: <strong id="sudoku-errors" style="color:var(--danger);">0</strong>/5</span>
+                            </div>
+
+                            <div style="display:flex; gap:0.5rem;">
+                                <button class="btn btn-secondary" id="btn-sudoku-check" style="padding:0.4rem 0.8rem; font-size:0.85rem;">검증 🔍</button>
+                                <button class="btn btn-primary" id="btn-sudoku-reset" style="padding:0.4rem 1rem; font-size:0.85rem; font-weight:700;">새 게임 🔄</button>
+                            </div>
+                        </div>
+
+                        <!-- Sudoku Board Layout -->
+                        <div style="background-color:rgba(0,0,0,0.2); border:1px solid var(--border-color); border-radius:12px; padding:1.25rem; display:flex; justify-content:center;">
+                            <div id="sudoku-board" class="sudoku-board-grid"></div>
+                        </div>
+
+                        <!-- Mobile Input Number Pad -->
+                        <div style="width:100%; display:flex; flex-direction:column; gap:0.5rem; align-items:center;">
+                            <span style="font-size:0.8rem; color:var(--text-muted);">번호 선택 입력 패드 (원하는 셀 클릭 후 아래 번호를 누르세요)</span>
+                            <div style="display:flex; gap:0.35rem; width:100%; max-width:400px; justify-content:center;">
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="1" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">1</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="2" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">2</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="3" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">3</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="4" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">4</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="5" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">5</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="6" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">6</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="7" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">7</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="8" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">8</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="9" style="padding:0.5rem 0.75rem; font-size:1.1rem; flex:1;">9</button>
+                                <button class="btn btn-secondary sudoku-num-btn" data-num="clear" style="padding:0.5rem 0.5rem; font-size:0.9rem; flex:1.2; color:var(--danger); font-weight:700;">지우기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 2048 탭 -->
+                <div class="tools-tab-panel" id="game-2048">
+                    <div class="checker-card" style="padding: 1.5rem; margin-top: 0; display:flex; flex-direction:column; align-items:center; gap:1.25rem;">
+                        <div style="border-bottom: 1px solid var(--border-color); padding-bottom:0.75rem; width:100%; text-align:left;">
+                            <span class="checker-title" style="font-size:1.4rem;">🔢 2048 숫자 퍼즐</span>
+                            <p style="color:var(--text-muted); font-size:0.85rem; margin-top:0.4rem;">타일들을 슬라이드하여 같은 숫자의 타일을 병합하고 2048 타일을 만들어내세요!</p>
+                        </div>
+
+                        <!-- 2048 Controls -->
+                        <div class="game-controls-bar" style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:1rem;">
+                            <div style="display:flex; gap:1rem; align-items:center; font-family:monospace; font-size:1.1rem;">
+                                <span>점수: <strong id="score-2048" style="color:var(--secondary);">0</strong></span>
+                                <span>최고 기록: <strong id="best-2048" style="color:var(--primary);">0</strong></span>
+                            </div>
+
+                            <button class="btn btn-primary" id="btn-2048-reset" style="padding:0.4rem 1rem; font-size:0.85rem; font-weight:700;">재시작 🔄</button>
+                        </div>
+
+                        <!-- 2048 Play Area -->
+                        <div style="background-color:rgba(0,0,0,0.25); border:1px solid var(--border-color); border-radius:12px; padding:1rem; position:relative;">
+                            <div id="board-2048" class="board-grid-2048">
+                                <!-- 16 tiles dynamically generated here -->
+                            </div>
+                            
+                            <!-- Game Over Overlay -->
+                            <div id="overlay-2048" class="game-overlay-2048" style="display:none;">
+                                <div style="font-size:2rem; font-weight:800; color:var(--danger); margin-bottom:1rem;">Game Over!</div>
+                                <button class="btn btn-primary" id="btn-2048-reset-overlay" style="padding:0.5rem 1.5rem; font-weight:700;">다시 도전</button>
+                            </div>
+                        </div>
+
+                        <!-- Keyboard/Mobile controls instructions -->
+                        <div style="width:100%; display:flex; flex-direction:column; gap:0.75rem; align-items:center;">
+                            <span style="font-size:0.8rem; color:var(--text-muted);">* PC: 방향키(↑, ↓, ←, →) 또는 WASD 키 사용 | * 모바일: 화면 보드판을 손가락으로 쓸어 넘기기(스와이프)</span>
+                            
+                            <!-- Virtual Arrow Pad for Touch Screens -->
+                            <div class="virtual-dpad" style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 0.25rem; width: 140px; margin-top:0.25rem;">
+                                <div style="grid-column: 2;"><button class="btn btn-secondary btn-2048-dpad" data-dir="up" style="padding:0.4rem 0.6rem; width:100%; font-size:1.1rem;">↑</button></div>
+                                <div style="grid-column: 1 / span 3; display:flex; gap:0.25rem;">
+                                    <button class="btn btn-secondary btn-2048-dpad" data-dir="left" style="padding:0.4rem 0.6rem; flex:1; font-size:1.1rem;">←</button>
+                                    <button class="btn btn-secondary btn-2048-dpad" data-dir="down" style="padding:0.4rem 0.6rem; flex:1; font-size:1.1rem;">↓</button>
+                                    <button class="btn btn-secondary btn-2048-dpad" data-dir="right" style="padding:0.4rem 0.6rem; flex:1; font-size:1.1rem;">→</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Bottom Ad slot -->
+        <div class="ad-container" style="margin: 0 auto 4rem auto; max-width: 1200px;">
+            [ ADVERTISEMENT - 하단 광고 영역 ]
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="index.html" class="logo" style="margin-bottom: 1rem;">
+                        VerifyAI<span class="logo-dot"></span>
+                    </a>
+                    <p>VerifyAI는 지식과 연구의 진실성을 지키기 위해 노력하는 독립적인 오픈 소스 프로젝트입니다. 학술 연구 및 학업 지원용 시뮬레이터를 무료로 사용할 수 있습니다.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">유용한 링크</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">홈</a></li>
+                        <li><a href="tools.html">글쓰기 도구</a></li>
+                        <li><a href="shelter.html">학술 쉼터</a></li>
+                        <li><a href="about.html">소개 및 문의</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">법적 정책 및 관리</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy.html">개인정보처리방침</a></li>
+                        <li><a href="terms.html">서비스 이용약관</a></li>
+                        <li><a href="robots.txt">크롤러 정책</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 VerifyAI. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/shelter.js"></script>
+</body>
+</html>

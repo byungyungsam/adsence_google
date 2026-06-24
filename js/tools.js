@@ -58,7 +58,18 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // PC Cleanup Source Code Copy
         btnCopyBatSource: document.getElementById('btn-copy-bat-source'),
-        batSourceCode: document.getElementById('bat-source-code')
+        batSourceCode: document.getElementById('bat-source-code'),
+
+        // Academic Calculator DOM elements
+        calcHistory: document.getElementById('calc-history'),
+        calcDisplay: document.getElementById('calc-display'),
+        calcManuscriptInput: document.getElementById('calc-manuscript-input'),
+        calcManuscriptSheets: document.getElementById('calc-manuscript-sheets'),
+        calcManuscriptChars: document.getElementById('calc-manuscript-chars'),
+        calcEstFormat: document.getElementById('calc-est-format'),
+        calcEstFontsize: document.getElementById('calc-est-fontsize'),
+        calcEstSpacing: document.getElementById('calc-est-spacing'),
+        calcEstPages: document.getElementById('calc-est-pages')
     };
 
     // --------------------------------------------------
@@ -671,5 +682,239 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('복사에 실패했습니다. 소스코드를 직접 드래그해서 복사해 주세요.');
             });
         });
+    }
+
+    // --------------------------------------------------
+    // 8. Academic Calculator Logic
+    // --------------------------------------------------
+    let calcExpression = '';
+    let calcResultShown = false;
+
+    // Mapping calculator buttons
+    const calcBtns = document.querySelectorAll('.calc-btn');
+    if (calcBtns && els.calcDisplay) {
+        calcBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const val = btn.getAttribute('data-val');
+                handleCalcInput(val);
+            });
+        });
+    }
+
+    // Keyboard support for calculator
+    document.addEventListener('keydown', (e) => {
+        // Only trigger if active tab is academic-calc
+        const activeTabBtn = document.querySelector('.tools-tab-btn.active');
+        if (!activeTabBtn || activeTabBtn.getAttribute('data-tab') !== 'academic-calc') return;
+
+        const key = e.key;
+        if (key >= '0' && key <= '9') handleCalcInput(key);
+        else if (key === '+' || key === '-' || key === '*' || key === '/' || key === '.' || key === '(' || key === ')') handleCalcInput(key);
+        else if (key === 'Enter' || key === '=') {
+            e.preventDefault();
+            handleCalcInput('=');
+        } else if (key === 'Backspace') {
+            e.preventDefault();
+            handleCalcInput('backspace');
+        } else if (key === 'Escape' || key === 'c' || key === 'C') {
+            handleCalcInput('C');
+        }
+    });
+
+    function handleCalcInput(val) {
+        if (!els.calcDisplay || !els.calcHistory) return;
+
+        if (calcResultShown) {
+            // If result was just shown, typing a number clears screen. Operators continue from result.
+            if (val === 'C' || val === 'backspace' || val === '=') {
+                // Keep default behavior
+            } else if ('0123456789.pi(e'.includes(val) || ['sin', 'cos', 'tan', 'log', 'ln', 'sqrt'].includes(val)) {
+                calcExpression = '';
+            }
+            calcResultShown = false;
+        }
+
+        if (val === 'C') {
+            calcExpression = '';
+            els.calcDisplay.textContent = '0';
+            els.calcHistory.textContent = '';
+        } else if (val === 'backspace') {
+            if (calcExpression.endsWith('sin(') || calcExpression.endsWith('cos(') || calcExpression.endsWith('tan(') || calcExpression.endsWith('log(') || calcExpression.endsWith('sqrt(')) {
+                calcExpression = calcExpression.slice(0, -4);
+            } else if (calcExpression.endsWith('ln(')) {
+                calcExpression = calcExpression.slice(0, -3);
+            } else {
+                calcExpression = calcExpression.slice(0, -1);
+            }
+            els.calcDisplay.textContent = calcExpression || '0';
+        } else if (val === '=') {
+            evaluateExpression();
+        } else {
+            // Handle scientific function appends
+            if (['sin', 'cos', 'tan', 'log', 'ln', 'sqrt'].includes(val)) {
+                calcExpression += val + '(';
+            } else if (val === 'pi') {
+                calcExpression += 'π';
+            } else if (val === 'e') {
+                calcExpression += 'e';
+            } else {
+                calcExpression += val;
+            }
+            els.calcDisplay.textContent = calcExpression;
+        }
+    }
+
+    function evaluateExpression() {
+        if (!calcExpression) return;
+        
+        let expressionForEval = calcExpression;
+        
+        // Replace visual symbols with math equivalent for evaluation
+        expressionForEval = expressionForEval.replace(/π/g, 'Math.PI');
+        expressionForEval = expressionForEval.replace(/e/g, 'Math.E');
+        expressionForEval = expressionForEval.replace(/÷/g, '/');
+        expressionForEval = expressionForEval.replace(/×/g, '*');
+        
+        // Handle trig and functions using Math
+        expressionForEval = expressionForEval.replace(/sin\(/g, 'Math.sin(');
+        expressionForEval = expressionForEval.replace(/cos\(/g, 'Math.cos(');
+        expressionForEval = expressionForEval.replace(/tan\(/g, 'Math.tan(');
+        // JS Math.log is ln, Math.log10 is log
+        expressionForEval = expressionForEval.replace(/log\(/g, 'Math.log10(');
+        expressionForEval = expressionForEval.replace(/ln\(/g, 'Math.log(');
+        expressionForEval = expressionForEval.replace(/sqrt\(/g, 'Math.sqrt(');
+        
+        // Handle exponentiation using '**'
+        expressionForEval = expressionForEval.replace(/\^/g, '**');
+
+        try {
+            // Count open parentheses and auto-close them if they are missing
+            const openParens = (expressionForEval.match(/\(/g) || []).length;
+            const closeParens = (expressionForEval.match(/\)/g) || []).length;
+            if (openParens > closeParens) {
+                expressionForEval += ')'.repeat(openParens - closeParens);
+                calcExpression += ')'.repeat(openParens - closeParens);
+            }
+
+            // Safe mathematical evaluation using Function constructor
+            const result = new Function(`return ${expressionForEval}`)();
+            
+            if (result === undefined || isNaN(result)) {
+                throw new Error("Invalid Result");
+            }
+
+            // Display formatting
+            let formattedResult = result;
+            if (typeof result === 'number') {
+                if (!Number.isInteger(result)) {
+                    formattedResult = parseFloat(result.toFixed(8)); // limit decimal points
+                }
+            }
+            
+            els.calcHistory.textContent = calcExpression + ' =';
+            els.calcDisplay.textContent = formattedResult;
+            calcExpression = String(formattedResult);
+            calcResultShown = true;
+        } catch (err) {
+            els.calcHistory.textContent = calcExpression + ' =';
+            els.calcDisplay.textContent = 'Error';
+            calcResultShown = true;
+        }
+    }
+
+    // --------------------------------------------------
+    // 9. Manuscript Sheet & Document Page Estimator Logic
+    // --------------------------------------------------
+    function updateManuscriptAndEstimations() {
+        if (!els.calcManuscriptInput) return;
+        
+        const text = els.calcManuscriptInput.value;
+        const charCount = text.length;
+        
+        // 200-char Manuscript sheet calculation
+        const sheets = Math.ceil(charCount / 200);
+        
+        if (els.calcManuscriptSheets) els.calcManuscriptSheets.textContent = sheets.toLocaleString();
+        if (els.calcManuscriptChars) els.calcManuscriptChars.textContent = charCount.toLocaleString();
+
+        // Page Estimation
+        estimatePages(charCount, text);
+    }
+
+    function estimatePages(charCount, text) {
+        if (!els.calcEstPages || !els.calcEstFormat || !els.calcEstFontsize || !els.calcEstSpacing) return;
+
+        const format = els.calcEstFormat.value;
+        const fontSize = parseInt(els.calcEstFontsize.value) || 10;
+        const spacing = parseFloat(els.calcEstSpacing.value) || 1.6;
+
+        let estimatedPage = 0.0;
+
+        if (charCount > 0) {
+            if (format === 'hwp') {
+                let baseCharsPerPage = 1000;
+                if (spacing === 1.8) baseCharsPerPage = 900;
+                else if (spacing === 2.0) baseCharsPerPage = 800;
+
+                // Adjust based on Font Size
+                if (fontSize === 11) baseCharsPerPage *= 0.9;
+                else if (fontSize === 12) baseCharsPerPage *= 0.8;
+
+                estimatedPage = charCount / baseCharsPerPage;
+            } else {
+                const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                
+                let baseWordsPerPage = 500;
+                if (spacing === 1.8) baseWordsPerPage = 380;
+                else if (spacing === 2.0) baseWordsPerPage = 300;
+                else if (spacing === 1.6) baseWordsPerPage = 420;
+                else if (spacing === 1.0) baseWordsPerPage = 600;
+                else if (spacing === 1.15) baseWordsPerPage = 500;
+                else if (spacing === 1.5) baseWordsPerPage = 400;
+
+                // Adjust based on Font Size
+                if (fontSize === 11) baseWordsPerPage *= 0.9;
+                else if (fontSize === 12) baseWordsPerPage *= 0.8;
+
+                estimatedPage = words / baseWordsPerPage;
+            }
+        }
+
+        els.calcEstPages.textContent = parseFloat(estimatedPage.toFixed(1));
+    }
+
+    // Dynamic dropdown updates for Estimator Spacing options based on Format
+    if (els.calcEstFormat && els.calcEstSpacing) {
+        els.calcEstFormat.addEventListener('change', () => {
+            const format = els.calcEstFormat.value;
+            els.calcEstSpacing.innerHTML = '';
+            
+            if (format === 'hwp') {
+                els.calcEstSpacing.innerHTML = `
+                    <option value="1.6" selected>160% (일반 보고서)</option>
+                    <option value="1.8">180% (논문 표준)</option>
+                    <option value="2.0">200% (여유 있음)</option>
+                `;
+            } else { // word
+                els.calcEstSpacing.innerHTML = `
+                    <option value="1.0">1.0 (싱글 스페이스)</option>
+                    <option value="1.15" selected>1.15 (기본값)</option>
+                    <option value="1.5">1.5 (대학 에세이)</option>
+                    <option value="2.0">2.0 (더블 스페이스)</option>
+                `;
+            }
+            updateManuscriptAndEstimations();
+        });
+    }
+
+    // Bind event listeners to dropdowns and input
+    if (els.calcManuscriptInput) {
+        els.calcManuscriptInput.addEventListener('input', updateManuscriptAndEstimations);
+    }
+    if (els.calcEstFontsize) {
+        els.calcEstFontsize.addEventListener('change', updateManuscriptAndEstimations);
+    }
+    if (els.calcEstSpacing) {
+        els.calcEstSpacing.addEventListener('change', updateManuscriptAndEstimations);
     }
 });

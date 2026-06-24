@@ -1,0 +1,261 @@
+/* ==================================================
+   VerifyAI Games CSS stylesheet (css/games.css)
+   ================================================== */
+
+/* --- 1. Minesweeper Styling --- */
+.mine-board-grid {
+    display: grid;
+    gap: 2px;
+    background-color: var(--border-color);
+    padding: 2px;
+    border-radius: 4px;
+    user-select: none;
+}
+
+.mine-cell {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color var(--transition), transform 0.1s;
+    border-radius: 2px;
+}
+
+.mine-cell:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.mine-cell:active {
+    transform: scale(0.95);
+}
+
+.mine-cell.revealed {
+    background: rgba(0, 0, 0, 0.35);
+    border-color: rgba(255, 255, 255, 0.02);
+    color: var(--text-main);
+    cursor: default;
+}
+
+.mine-cell.revealed:hover {
+    background: rgba(0, 0, 0, 0.35);
+}
+
+.mine-cell.flagged {
+    color: var(--secondary);
+    background: rgba(0, 229, 255, 0.05);
+}
+
+.mine-cell.mine {
+    background: rgba(255, 23, 68, 0.25) !important;
+    color: var(--danger) !important;
+    animation: shake 0.3s ease;
+}
+
+/* Number colors for neighboring mines */
+.mine-count-1 { color: #29b6f6; } /* Light Blue */
+.mine-count-2 { color: #66bb6a; } /* Light Green */
+.mine-count-3 { color: #ef5350; } /* Light Red */
+.mine-count-4 { color: #ab47bc; } /* Purple */
+.mine-count-5 { color: #ffca28; } /* Yellow */
+.mine-count-6 { color: #26a69a; } /* Teal */
+.mine-count-7 { color: #ec407a; } /* Pink */
+.mine-count-8 { color: #ffffff; } /* White */
+
+/* --- 2. Sudoku Styling --- */
+.sudoku-board-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    background-color: var(--border-color);
+    border: 2px solid var(--text-muted);
+    gap: 1px;
+    padding: 1px;
+}
+
+.sudoku-cell-container {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(18, 14, 37, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    .sudoku-cell-container {
+        width: 34px;
+        height: 34px;
+    }
+    .mine-cell {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Thicker borders for 3x3 blocks */
+.border-right-thick {
+    border-right: 2px solid var(--text-muted) !important;
+}
+
+.border-bottom-thick {
+    border-bottom: 2px solid var(--text-muted) !important;
+}
+
+.sudoku-cell {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-main);
+    outline: none;
+    cursor: pointer;
+    caret-color: transparent; /* Hide cursor typing indicator */
+}
+
+/* Clue numbers (given by engine) */
+.sudoku-cell.clue {
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 700;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Selected active cell */
+.sudoku-cell-container.selected {
+    background-color: rgba(0, 229, 255, 0.08) !important;
+    box-shadow: inset 0 0 0 1px var(--secondary);
+}
+
+/* Error/Duplication highlights */
+.sudoku-cell.error {
+    color: var(--danger) !important;
+    font-weight: 700;
+    background-color: rgba(255, 23, 68, 0.08) !important;
+}
+
+/* Same number highlight (when clicking a cell) */
+.sudoku-cell-container.same-num {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* User filled numbers */
+.sudoku-cell.user-val {
+    color: var(--secondary);
+}
+
+/* --- 3. 2048 Styling --- */
+.board-grid-2048 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+    width: 320px;
+    height: 320px;
+    background: rgba(18, 14, 37, 0.85);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+@media (max-width: 400px) {
+    .board-grid-2048 {
+        width: 280px;
+        height: 280px;
+        gap: 8px;
+        padding: 8px;
+    }
+}
+
+.cell-2048 {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+}
+
+.tile-2048 {
+    width: 65px;
+    height: 65px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    position: absolute;
+    transition: transform 0.1s ease-in-out, background-color var(--transition);
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    animation: spawn 0.15s ease-out;
+}
+
+@media (max-width: 400px) {
+    .tile-2048 {
+        width: 58px;
+        height: 58px;
+        font-size: 1.3rem;
+    }
+}
+
+/* Color scaling for 2048 tiles */
+.tile-2 { background: #3b3d4f; color: #eee; }
+.tile-4 { background: #4d4361; color: #eee; }
+.tile-8 { background: #f38f53; color: #fff; }
+.tile-16 { background: #f67c5f; color: #fff; }
+.tile-32 { background: #f65e3b; color: #fff; }
+.tile-64 { background: #ff4233; color: #fff; }
+.tile-128 { background: #edcf72; font-size:1.35rem; color: #000; box-shadow: 0 0 10px rgba(237,207,114,0.3); }
+.tile-256 { background: #edcc61; font-size:1.35rem; color: #000; box-shadow: 0 0 15px rgba(237,204,97,0.4); }
+.tile-512 { background: #edc850; font-size:1.35rem; color: #000; box-shadow: 0 0 20px rgba(237,200,80,0.5); }
+.tile-1024 { background: #edc53f; font-size:1.1rem; color: #000; box-shadow: 0 0 25px rgba(237,197,63,0.6); }
+.tile-2048 { background: #00e5ff; font-size:1.1rem; color: #000; box-shadow: 0 0 35px rgba(0,229,255,0.8); text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+.tile-4096 { background: #7c4dff; font-size:1.1rem; color: #fff; box-shadow: 0 0 35px rgba(124,77,255,0.8); }
+
+/* Game Overlay */
+.game-overlay-2048 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(12, 10, 26, 0.85);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animations */
+@keyframes spawn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-4px); }
+    40%, 80% { transform: translateX(4px); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

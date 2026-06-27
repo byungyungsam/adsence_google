@@ -1,0 +1,49 @@
+name: Daily Auto Publish
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # 한국 시간 매일 19:00 (UTC 10:00)
+  workflow_dispatch:      # 수동 트리거 지원
+
+permissions:
+  contents: write         # 변경 사항을 커밋하고 푸시할 수 있도록 권한 명시
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Random Delay (0 to 3600 seconds)
+        if: github.event_name == 'schedule'  # 예약 실행 시에만 랜덤 대기
+        run: |
+          DELAY=$((RANDOM % 3600))
+          echo "Waiting for $DELAY seconds before running publish pipeline..."
+          sleep $DELAY
+
+      - name: Publish post
+        run: node publish_post.js
+
+      - name: Tune SEO metadata
+        run: node tune_seo.js
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          
+          # 변경 사항이 있는지 검증하고 커밋 실행
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-publish next scheduled post and update SEO [skip ci]"
+            git push origin main
+          else
+            echo "No changes to commit. All drafts are already published or drafts folder is empty."
+          fi
